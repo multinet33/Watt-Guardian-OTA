@@ -3,16 +3,16 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 352,
+    "build_fw": 353,
     "build_fs": 227,
-    "released_at": "2026-05-04T20:10:00Z",
+    "released_at": "2026-05-04T20:18:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v352/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "b8c77f1de496eb649f59fa139797f48d61f7de64e8da4e0eead65cf1522a2843",
-        "size": 2017168
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v353/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "4c590c63efbdf0dd74233554243025d3073674248b0e452e718e9cb2709ada43",
+        "size": 2017248
       }
     },
-    "changelog": "FW352 — OTA pull timeout proxy étendu (10s → 20s) + diagnostic enrichi en cas de fail proxy_get. Combiné avec watt-proxy FW5 qui ajoute raw.githubusercontent.com à sa whitelist."
+    "changelog": "FW353 — Fix BUG-033 ligne rouge faux positif sur carte Dimmers. chainMissAcc++ ne compte plus que pour le M1 (depth=0, configuré explicitement). Les fils auto-discovered (depth>0) qui ne répondent pas étaient comptés comme 'modulators manquants' à tort si le M1 publiait un `child` résiduel. Maintenant ces fails sont juste loggés en DEBUG sans impacter l'UI."
   }
 }
