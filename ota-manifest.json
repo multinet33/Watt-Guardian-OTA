@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "b160085f033bec816797aa83b250acf11dbcc8c1030c155ae63fca0248d7a1bc",
-        "size": 2034656,
+        "sha256": "9bd7817e01e7c03f2d60376f6c56bce27701353538189b5e8c8b27edc7df09ae",
+        "size": 2034704,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "0e2936464fb85e71d3eff0d0144a641a6c7f0afff601a4dd83a3f7bd40ae7636",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW364+FS233 / EVO-104 ext — COMMERCIALE. Fix radical spam 'esp_task_wdt_reset task not found' (init wdt en tout début de setup). Fix critique modal OTA : (1) déclaration de success seulement si state=idle/uptodate (avant bug : modal disparaissait à la 1ère reconnexion alors que pipeline FW+FS continue avec 2 reboots restants), (2) timeout 90s→240s, (3) modal data-backdrop=static empêche fermeture accidentelle pendant l'OTA. Inclut FW363 (page recovery intégrée au catch-all) et FW362 (hardening flash FS)."
+    "changelog": "FW365+FS233 / EVO-104 ext — COMMERCIALE. FIX CRITIQUE flash FS : remplacement Update.h U_SPIFFS (bugué — partition mountée vide après flash malgré SHA correct, USB uploadfs OK) par esp_partition_erase_range + esp_partition_write direct, style esptool. Erase complète AVANT toute écriture, write linéaire ensuite. Plus de Update.end nécessaire. Inclut FW364 (fix WDT spam, modal OTA backdrop static + timeout 240s + état rebooting persistant pendant pipeline FW+FS), FW363 (recovery intégrée catch-all)."
   }
 }
