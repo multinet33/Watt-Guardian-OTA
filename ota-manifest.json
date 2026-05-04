@@ -3,16 +3,16 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 355,
-    "build_fs": 227,
-    "released_at": "2026-05-04T20:35:00Z",
+    "build_fw": 356,
+    "build_fs": 228,
+    "released_at": "2026-05-04T20:50:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v355/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "d2d3c80d02377b3f0f22a023808cf586ec139b8e09c2da0864e4b65f35cded6e",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v356/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "8ee94ae3817ceef8f6d1e585b1baaedacaa2d7c31b0cd446091dd0ea2ccc75ca",
         "size": 2019968
       }
     },
-    "changelog": "FW355 — Stratégie C+D fallback pour OTA pull download. C : suspend tasks non-critiques (LVGL, MQTT, Dallas, weather, forecast, chain, mDNS) + free caches → mesure heap après. Si > 50 KB, download direct. Sinon fallback D : NVS ota_pending + reboot. Au prochain boot, mode minimaliste (juste WiFi + AsyncWebServer) → heap fresh ~150 KB → download passe sans crash mbedtls. 100% transparent pour le user, 0 décision technique à prendre."
+    "changelog": "FW356 — Polish UX modal OTA pull. Nouvel état 'REDÉMARRAGE' avec spinner + progress bar 90s + compteur visible. Détection auto perte connexion polling /ota/status (>6s = bascule mode rebooting). Reconnexion auto + reload page après détection retour device. Couvre les 2 cas : flash succès classique ET fallback D reboot pending heap insuffisant. Plus de 'fail silencieux' pendant le reboot mid-OTA — le user voit clairement ce qui se passe."
   }
 }
