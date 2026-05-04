@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "2266898fd52d2d758fb7f7fff95e696404d1aa69e458c04a07141c6547c3d51d",
-        "size": 2033392,
+        "sha256": "2ef41c9cb0f8e93789f2dd45615cfa8e0e91321e7cfdda047fe8f8b6ac31417e",
+        "size": 2033968,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "7b4a4ae042dd23251f517993c32096ea6a4f1f7e1ffb9f61d369765badaa4bd1",
+        "filesystem_sha256": "5166533351725cdeb375eda200481854ef05e737a0581d5d8796ffa767ff8995",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW361+FS231 / EVO-104 ext — VERSION COMMERCIALE (LICENSE_ENFORCED=1, env esp32-s3-hmi-3relays-commercial). Recovery mode Niveau 1 : si SPIFFS vide/cassé après flash interrompu, page HTML PROGMEM (~2 KB) sert un bouton 'Relancer flash filesystem' qui appelle /ota/preflight + /ota/check + /ota/apply. Setup minimal en mode recovery : skip MQTT/Dallas/Dimmer/weather/forecast (configs préservées en NVS via EVO-100). Inclut FW360 (preflight proxy, label 'Préparation en cours' tant que progress=0) et FW359 (OTA pull SPIFFS, modal step 1/2 - 2/2)."
+    "changelog": "FW362+FS232 / EVO-104 ext — COMMERCIALE. Hardening flash FS : pre-checks heap/HTTP/contentLength AVANT SPIFFS.end() (limite les corruptions partition au seul cas perte WiFi mid-stream ou SHA mismatch). Logs paliers 25/50/75% pendant le download FS pour diagnostiquer. UI modal : affiche BUILD_FS courant + disponible (FW___·FS___), taille combinée FW + FS selon scope. Inclut FW361 (recovery mode Niveau 1 page PROGMEM)."
   }
 }
