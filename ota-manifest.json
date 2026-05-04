@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "515ecf244fa460af11cd265b129e47c82bde5f46a5f869baeff9ae5ee72e587b",
-        "size": 2025824,
+        "sha256": "b958da85a492fca3b257ac9e04d335b53fd7290f64a93f2a5fcea0209305b0eb",
+        "size": 2028304,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "7b4a4ae042dd23251f517993c32096ea6a4f1f7e1ffb9f61d369765badaa4bd1",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW360+FS231 / EVO-104 ext — UX modal : (1) preflight proxy avant /ota/check (test connexion + rediscover sync si déco), (2) label dynamique pendant la phase downloading : 'Préparation en cours...' tant que progress=0 (cas strategy D où on attend le reboot pour vraiment lancer le download), bascule sur 'Téléchargement firmware.bin' / 'Téléchargement filesystem (UI web)' uniquement quand progress > 0. Inclut FW359 (OTA pull filesystem SPIFFS, modal step indicator 1/2 - 2/2)."
+    "changelog": "FW360+FS231 / EVO-104 ext — VERSION COMMERCIALE (LICENSE_ENFORCED=1, env esp32-s3-hmi-3relays-commercial). Précédentes releases sur ce tag étaient DIY par erreur, remplacées. UX modal : (1) preflight proxy avant /ota/check (test connexion + rediscover sync si déco), (2) label dynamique pendant la phase downloading : 'Préparation en cours...' tant que progress=0 (cas strategy D où on attend le reboot pour vraiment lancer le download), bascule sur 'Téléchargement firmware.bin' / 'Téléchargement filesystem (UI web)' uniquement quand progress > 0. Inclut FW359 (OTA pull filesystem SPIFFS, modal step indicator 1/2 - 2/2)."
   }
 }
