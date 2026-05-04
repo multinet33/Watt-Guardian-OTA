@@ -13,10 +13,10 @@
         "sha256": "515ecf244fa460af11cd265b129e47c82bde5f46a5f869baeff9ae5ee72e587b",
         "size": 2025824,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "4d884ffeba86bef6aced4ace1b81a44844c309319559b0045e579dd1d8706035",
+        "filesystem_sha256": "7b4a4ae042dd23251f517993c32096ea6a4f1f7e1ffb9f61d369765badaa4bd1",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW360 / EVO-104 ext — preflight proxy avant ouverture modal OTA. Nouveau endpoint /ota/preflight qui teste config.proxy_enabled, et si proxy configuré mais déco lance proxy_discover_now() sync (mDNS + fallback queryHost). UI : pendant le state checking, sous-libellé dynamique 'Test du proxy...' → 'Proxy reconnecté' / 'Proxy injoignable, fallback HTTPS direct'. Inclut FW359 (OTA pull filesystem SPIFFS, NVS ota_pending_fs, downloadAndApplyFS, modal step indicator)."
+    "changelog": "FW360+FS231 / EVO-104 ext — UX modal : (1) preflight proxy avant /ota/check (test connexion + rediscover sync si déco), (2) label dynamique pendant la phase downloading : 'Préparation en cours...' tant que progress=0 (cas strategy D où on attend le reboot pour vraiment lancer le download), bascule sur 'Téléchargement firmware.bin' / 'Téléchargement filesystem (UI web)' uniquement quand progress > 0. Inclut FW359 (OTA pull filesystem SPIFFS, modal step indicator 1/2 - 2/2)."
   }
 }
