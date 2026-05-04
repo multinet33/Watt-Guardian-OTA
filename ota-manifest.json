@@ -3,26 +3,16 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 349,
+    "build_fw": 351,
     "build_fs": 227,
-    "released_at": "2026-05-04T19:52:00Z",
+    "released_at": "2026-05-04T20:05:00Z",
     "envs": {
-      "ttgo-t-display-TEST": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v349/firmware-ttgo-t-display-TEST.bin",
-        "sha256": "cf70dd0d1016bd96a6d56288ea7559e010ede71035bc8e0dbd5bd6f68d1553ec",
-        "size": 1666272
-      },
-      "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v349/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "9ca4c94b587d38930139ccc21500aa6fa2a1eef9953d57ec71e712f38aa699ff",
-        "size": 2013152
-      },
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v349/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "9b1081086b0c67be2bd0297f557884121516d8984a322ff02b3636076dd2e8b0",
-        "size": 2016160
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v351/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "981ac83e5b31d9500aac9a8e5b0de6b0f4b308a1d076a8e2a18d2eb7a08a122d",
+        "size": 2016864
       }
     },
-    "changelog": "FW349 — Fix EVO-104 OTA pull : sérialisation via mutex outbound (évite MBEDTLS_ERR_SSL_ALLOC_FAILED -32512), URL manifest dissociée vers repo public dédié Watt-Guardian-OTA. Score qualité refondu, EVO-103 watchdog HTTP outbound stable, DIY badge titane."
+    "changelog": "FW351 — OTA pull pre-check heap : refuse HTTPS direct si maxAllocHeap < 35 KB (évite crash 'esp-sha alloc fail'). Erreur claire 'Heap insuffisant, configurez watt-proxy ou réessayez plus tard'. Délégation watt-proxy si configuré (économie ~25 KB heap mbedtls)."
   }
 }
