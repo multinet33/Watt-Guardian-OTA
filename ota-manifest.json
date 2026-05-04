@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "346ecaf24051fe587bb707d39b711f4b4964c12875417d75d0b3291634cf42ee",
+        "sha256": "bf733cc12293ea29f46511cbfc69a306ef0a260b058df11d0be7825f69e8fb52",
         "size": 2035328,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "8999d0033bcfddc0103ecd33f86eb0be5dbeec716ecadaa18f1c69775aff3cc9",
+        "filesystem_sha256": "88e67cade152568d9dca77ae8354c1a3e2742554a5d74817804c42e68f315ca4",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW366+FS235 / EVO-104 ext — COMMERCIALE. (1) Fix UX modal : ne bascule plus en 'rebooting' sur le seul signal NVS REBOOT_FOR_OTA — attend la perte de connexion réelle (failStreak). Évite la fenêtre 'Redémarrage en cours' qui s'affiche trop tôt avant même que le download FW commence. (2) pollUntilReady détecte la page recovery PROGMEM (string 'Recovery — Filesystem absent' dans le body) et retry au lieu de reload sur la mauvaise page. (3) Validation post-flash FS : read-back partition + SPIFFS.begin(false) + SPIFFS.exists('/index.html.gz') AVANT reboot final, log clair si mount KO. Inclut FW365 (esp_partition_write direct), FW364 (WDT, timeout 240s, backdrop static)."
+    "changelog": "FW367+FS236 / EVO-104 ext — COMMERCIALE. (1) Fix modal scope FW+FS : ne déclare plus 'success' à la fin de la phase 1 (state passe transitoirement à success entre FW done et reboot vers FS). Maintenant ne fire le success/reload que si current_step==2 ou scope mono-phase. Affiche 'Étape 1/2 terminée — redémarrage pour étape 2…' à la transition. (2) Sync BUILD_FS dans config.h (236) avec system-status.js : avant le marqueur log compile-time était figé à FS228 et trompeur. (3) Validation post-flash FS confirme SPIFFS mount + index.html.gz PRESENT avant reboot. Inclut FW365 esp_partition_write direct, FW364 WDT, modal fixes."
   }
 }
