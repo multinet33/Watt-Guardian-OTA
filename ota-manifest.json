@@ -3,16 +3,16 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 351,
+    "build_fw": 352,
     "build_fs": 227,
-    "released_at": "2026-05-04T20:05:00Z",
+    "released_at": "2026-05-04T20:10:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v351/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "981ac83e5b31d9500aac9a8e5b0de6b0f4b308a1d076a8e2a18d2eb7a08a122d",
-        "size": 2016864
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v352/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "b8c77f1de496eb649f59fa139797f48d61f7de64e8da4e0eead65cf1522a2843",
+        "size": 2017168
       }
     },
-    "changelog": "FW351 — OTA pull pre-check heap : refuse HTTPS direct si maxAllocHeap < 35 KB (évite crash 'esp-sha alloc fail'). Erreur claire 'Heap insuffisant, configurez watt-proxy ou réessayez plus tard'. Délégation watt-proxy si configuré (économie ~25 KB heap mbedtls)."
+    "changelog": "FW352 — OTA pull timeout proxy étendu (10s → 20s) + diagnostic enrichi en cas de fail proxy_get. Combiné avec watt-proxy FW5 qui ajoute raw.githubusercontent.com à sa whitelist."
   }
 }
