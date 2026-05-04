@@ -1,19 +1,22 @@
 {
   "_comment": "Watt-Guardian OTA pull manifest. Lu par le firmware Guardian (FW348+) via raw.githubusercontent.com. À regénérer manuellement (ou via CI/CD GitHub Actions, EVO-104 Phase 4) à chaque release. SHA-256 = hash du firmware.bin sortie de pio run.",
-  "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
+  "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 sentinelle pendant la phase de test EVO-104. Le binaire pointé est en réalité FW357. Permet de toujours afficher 'DISPONIBLE' au device pour itérer sans bumper le FW réel à chaque correction. À ramener à la valeur réelle (357 ou ultérieure) quand la mécanique OTA pull sera stabilisée terrain.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW359/BUILD_FS=229. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
     "build_fw": 9999,
-    "build_fs": 228,
-    "released_at": "2026-05-04T21:25:00Z",
+    "build_fs": 9999,
+    "released_at": "2026-05-04T22:05:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "2abaac83117f44b9f9d237d14171986e1ab71824debe291dc2cd7863f9a3f771",
-        "size": 2020512
+        "sha256": "3a14c36e7f531512f9f17c3230579af008406c90abe436f5a0a1a44e98fb7b5e",
+        "size": 2024720,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "e472278de7ee79b5cb7b38d96d21dbf5e75c6de78ba02d319f9f764fcec7d428",
+        "filesystem_size": 4194304
       }
     },
-    "changelog": "FW358 (annoncé en sentinelle 9999) — fix HTTP 302 download : ajout setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS) sur HTTPClient pour suivre la redirection GitHub Releases vers release-assets.githubusercontent.com. Sans ça, GET retournait 302 et avortait. Inclut tous les fixes FW357 (NVS putUInt/getUInt fiabilité arduino-esp32 3.x + skip S3HMI/LVGL init en mode pending boot pour heap fresh ~180 KB)."
+    "changelog": "FW359 / EVO-104 ext — extension OTA pull au filesystem SPIFFS. Manifest schema étendu (filesystem_url/sha/size par env), Status.has_filesystem/need_fw/need_fs, downloadAndApplyFS() avec U_SPIFFS, NVS ota_pending_fs, modal info.html avec step indicator 1/2 ou 2/2 + scope badge. Pipeline FW+FS : flash FW → reboot → boot détecte fs_pending → flash FS → reboot final. Pas de mode rollback FS (mitigé par EVO-100 NVS configs)."
   }
 }
