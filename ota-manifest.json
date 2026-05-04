@@ -1,0 +1,28 @@
+{
+  "_comment": "Watt-Guardian OTA pull manifest. Version actuelle des binaires en GitHub Release. À regénérer manuellement (ou via CI/CD GitHub Actions, EVO-104 Phase 4) à chaque release. SHA-256 = hash du firmware.bin sortie de pio run.",
+  "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\".",
+  "guardian": {
+    "version": "2026.05",
+    "build_fw": 348,
+    "build_fs": 227,
+    "released_at": "2026-05-04T19:42:00Z",
+    "envs": {
+      "ttgo-t-display-TEST": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian/releases/download/v348/firmware-ttgo-t-display-TEST.bin",
+        "sha256": "b29f2a75566a15a13d41fca99d669a3de83a340a27c028593b820bc48e3eed71",
+        "size": 1666064
+      },
+      "esp32-s3-hmi-1relay": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian/releases/download/v348/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "da2523ecc7951e5eb1a8437675a963120fd7453641b0559e880baf31e52361b6",
+        "size": 2012960
+      },
+      "esp32-s3-hmi-3relays": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian/releases/download/v348/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "4770aa7715c2e29225cd388ceb33896a024285c64c732ddb0d7562c94c7dfd2a",
+        "size": 2015952
+      }
+    },
+    "changelog": "EVO-104 Phase 1+2+3 — OTA pull Niveau 1 backend + modal info.html + badge sidebar. Score qualité refondu (6 metrics + effort_factor anti-biais + 24h/7j ring + tier-aware max+). EVO-103 watchdog HTTP outbound (mutex + ring 10 events + per-module counters + self-heal reboot 3min). DIY badge titane. Bug fixes timezone pic du jour + horloge clignote."
+  }
+}
