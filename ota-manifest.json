@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "9bd7817e01e7c03f2d60376f6c56bce27701353538189b5e8c8b27edc7df09ae",
-        "size": 2034704,
+        "sha256": "346ecaf24051fe587bb707d39b711f4b4964c12875417d75d0b3291634cf42ee",
+        "size": 2035328,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "0045bec5dc3c7a2aca2963e6205a395bc0e9887ff4560adac3a69c89e2578852",
+        "filesystem_sha256": "8999d0033bcfddc0103ecd33f86eb0be5dbeec716ecadaa18f1c69775aff3cc9",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW365+FS234 / EVO-104 ext — COMMERCIALE. UX modal phase 2 : (1) après le 1er reboot et reconnexion, si phase 2 (FS download) active, bascule UI 'rebooting' → 'downloading' propre (barre de progress + label + step indicator visibles, comme phase 1) au lieu de juste un compteur secondes. (2) avant location.reload, polle HEAD / jusqu'à 200 OK pour éviter '404 not found' transitoire entre fin de flash et disponibilité index au boot suivant. Inclut FW365 (fix critique esp_partition_write direct), FW364 (WDT spam, timeout 240s, backdrop static), FW363 (recovery catch-all)."
+    "changelog": "FW366+FS235 / EVO-104 ext — COMMERCIALE. (1) Fix UX modal : ne bascule plus en 'rebooting' sur le seul signal NVS REBOOT_FOR_OTA — attend la perte de connexion réelle (failStreak). Évite la fenêtre 'Redémarrage en cours' qui s'affiche trop tôt avant même que le download FW commence. (2) pollUntilReady détecte la page recovery PROGMEM (string 'Recovery — Filesystem absent' dans le body) et retry au lieu de reload sur la mauvaise page. (3) Validation post-flash FS : read-back partition + SPIFFS.begin(false) + SPIFFS.exists('/index.html.gz') AVANT reboot final, log clair si mount KO. Inclut FW365 (esp_partition_write direct), FW364 (WDT, timeout 240s, backdrop static)."
   }
 }
