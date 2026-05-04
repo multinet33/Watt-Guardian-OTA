@@ -3,16 +3,16 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 353,
+    "build_fw": 354,
     "build_fs": 227,
-    "released_at": "2026-05-04T20:18:00Z",
+    "released_at": "2026-05-04T20:25:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v353/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "4c590c63efbdf0dd74233554243025d3073674248b0e452e718e9cb2709ada43",
-        "size": 2017248
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v354/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "480bd038a35e16d61e11eec7fc2799c6efd250161b2bc78300b57efeedde4f03",
+        "size": 2017456
       }
     },
-    "changelog": "FW353 — Fix BUG-033 ligne rouge faux positif sur carte Dimmers. chainMissAcc++ ne compte plus que pour le M1 (depth=0, configuré explicitement). Les fils auto-discovered (depth>0) qui ne répondent pas étaient comptés comme 'modulators manquants' à tort si le M1 publiait un `child` résiduel. Maintenant ces fails sont juste loggés en DEBUG sans impacter l'UI."
+    "changelog": "FW354 — Fix BUG-033 (chainMissAcc depth=0 only) + pre-check heap dans downloadAndApply (refuse si maxAlloc < 50 KB) avec message user clair pour le crash MBEDTLS observé sur 3R en runtime. Workaround utilisateur : reboot Guardian + lancer OTA dans la 1ère minute (heap fresh). EVO future : streaming via watt-proxy."
   }
 }
