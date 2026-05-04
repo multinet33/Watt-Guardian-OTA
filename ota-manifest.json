@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "3a14c36e7f531512f9f17c3230579af008406c90abe436f5a0a1a44e98fb7b5e",
-        "size": 2024720,
+        "sha256": "515ecf244fa460af11cd265b129e47c82bde5f46a5f869baeff9ae5ee72e587b",
+        "size": 2025824,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "e472278de7ee79b5cb7b38d96d21dbf5e75c6de78ba02d319f9f764fcec7d428",
+        "filesystem_sha256": "4d884ffeba86bef6aced4ace1b81a44844c309319559b0045e579dd1d8706035",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW359 / EVO-104 ext — extension OTA pull au filesystem SPIFFS. Manifest schema étendu (filesystem_url/sha/size par env), Status.has_filesystem/need_fw/need_fs, downloadAndApplyFS() avec U_SPIFFS, NVS ota_pending_fs, modal info.html avec step indicator 1/2 ou 2/2 + scope badge. Pipeline FW+FS : flash FW → reboot → boot détecte fs_pending → flash FS → reboot final. Pas de mode rollback FS (mitigé par EVO-100 NVS configs)."
+    "changelog": "FW360 / EVO-104 ext — preflight proxy avant ouverture modal OTA. Nouveau endpoint /ota/preflight qui teste config.proxy_enabled, et si proxy configuré mais déco lance proxy_discover_now() sync (mDNS + fallback queryHost). UI : pendant le state checking, sous-libellé dynamique 'Test du proxy...' → 'Proxy reconnecté' / 'Proxy injoignable, fallback HTTPS direct'. Inclut FW359 (OTA pull filesystem SPIFFS, NVS ota_pending_fs, downloadAndApplyFS, modal step indicator)."
   }
 }
