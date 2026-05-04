@@ -3,16 +3,17 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé).",
   "guardian": {
     "version": "2026.05",
-    "build_fw": 356,
+    "_test_phase_note": "build_fw=9999 sentinelle pendant la phase de test EVO-104. Le binaire pointé est en réalité FW357. Permet de toujours afficher 'DISPONIBLE' au device pour itérer sans bumper le FW réel à chaque correction. À ramener à la valeur réelle (357 ou ultérieure) quand la mécanique OTA pull sera stabilisée terrain.",
+    "build_fw": 9999,
     "build_fs": 228,
-    "released_at": "2026-05-04T20:50:00Z",
+    "released_at": "2026-05-04T21:25:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v356/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "8ee94ae3817ceef8f6d1e585b1baaedacaa2d7c31b0cd446091dd0ea2ccc75ca",
-        "size": 2019968
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "5e8c9ff8c9d62f25367d24649e4d262f0688260f9306587bb8617263b0a419d4",
+        "size": 2020496
       }
     },
-    "changelog": "FW356 — Polish UX modal OTA pull. Nouvel état 'REDÉMARRAGE' avec spinner + progress bar 90s + compteur visible. Détection auto perte connexion polling /ota/status (>6s = bascule mode rebooting). Reconnexion auto + reload page après détection retour device. Couvre les 2 cas : flash succès classique ET fallback D reboot pending heap insuffisant. Plus de 'fail silencieux' pendant le reboot mid-OTA — le user voit clairement ce qui se passe."
+    "changelog": "FW357 (annoncé en sentinelle 9999 pendant phase test) — 2 fixes critiques fallback D OTA pending : (1) NVS putUInt/getUInt au lieu de putBool/getBool (le flag pending n'était pas relu après reboot — arduino-esp32 3.x). (2) Skip init S3HMI/LVGL en mode pending → libère ~75 KB SRAM DMA + LVGL pour heap fresh ~150 KB lors du download HTTPS. Logs Serial enrichis pour diagnostic lecture NVS. Polish UX modal OTA conservé."
   }
 }
