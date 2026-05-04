@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "046cdbfe772bceb931db9c05256e582ad600452315a59ea754501cff5818fc5b",
-        "size": 2034048,
+        "sha256": "fc9c78a55fe0c205efb80522f7d755870a94d43c332fc8b33e5000222100b733",
+        "size": 2034304,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "5166533351725cdeb375eda200481854ef05e737a0581d5d8796ffa767ff8995",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW363+FS232 / EVO-104 ext — COMMERCIALE. Fix erreur cosmétique 'esp_task_wdt_reset task not found' en mode recovery / AP : init TWDT + subscribe loopTask AVANT le return early du setup. Inclut FW362 (hardening flash FS : pre-checks AVANT SPIFFS.end + logs paliers 25/50/75%, UI modal expose BUILD_FS courant/dispo + taille combinée FW+FS) et FW361 (recovery mode Niveau 1 page PROGMEM)."
+    "changelog": "FW363+FS232 / EVO-104 ext — COMMERCIALE. Fix critique recovery : la page PROGMEM était masquée par le catch-all server.on('/*') de call_pages enregistré avant. Maintenant le check recovery::isActive() est INTÉGRÉ au début du catch-all → la page recovery est servie pour toute requête HTML quand SPIFFS vide (sauf /ota/*, /favicon.ico, /update). Inclut le fix WDT recovery/AP, hardening flash FS, UI BUILD_FS visible."
   }
 }
