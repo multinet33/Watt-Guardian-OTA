@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "2ef41c9cb0f8e93789f2dd45615cfa8e0e91321e7cfdda047fe8f8b6ac31417e",
-        "size": 2033968,
+        "sha256": "046cdbfe772bceb931db9c05256e582ad600452315a59ea754501cff5818fc5b",
+        "size": 2034048,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "5166533351725cdeb375eda200481854ef05e737a0581d5d8796ffa767ff8995",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW362+FS232 / EVO-104 ext — COMMERCIALE. Hardening flash FS : pre-checks heap/HTTP/contentLength AVANT SPIFFS.end() (limite les corruptions partition au seul cas perte WiFi mid-stream ou SHA mismatch). Logs paliers 25/50/75% pendant le download FS pour diagnostiquer. UI modal : affiche BUILD_FS courant + disponible (FW___·FS___), taille combinée FW + FS selon scope. Inclut FW361 (recovery mode Niveau 1 page PROGMEM)."
+    "changelog": "FW363+FS232 / EVO-104 ext — COMMERCIALE. Fix erreur cosmétique 'esp_task_wdt_reset task not found' en mode recovery / AP : init TWDT + subscribe loopTask AVANT le return early du setup. Inclut FW362 (hardening flash FS : pre-checks AVANT SPIFFS.end + logs paliers 25/50/75%, UI modal expose BUILD_FS courant/dispo + taille combinée FW+FS) et FW361 (recovery mode Niveau 1 page PROGMEM)."
   }
 }
