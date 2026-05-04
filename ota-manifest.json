@@ -13,10 +13,10 @@
         "sha256": "9bd7817e01e7c03f2d60376f6c56bce27701353538189b5e8c8b27edc7df09ae",
         "size": 2034704,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "0e2936464fb85e71d3eff0d0144a641a6c7f0afff601a4dd83a3f7bd40ae7636",
+        "filesystem_sha256": "0045bec5dc3c7a2aca2963e6205a395bc0e9887ff4560adac3a69c89e2578852",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW365+FS233 / EVO-104 ext — COMMERCIALE. FIX CRITIQUE flash FS : remplacement Update.h U_SPIFFS (bugué — partition mountée vide après flash malgré SHA correct, USB uploadfs OK) par esp_partition_erase_range + esp_partition_write direct, style esptool. Erase complète AVANT toute écriture, write linéaire ensuite. Plus de Update.end nécessaire. Inclut FW364 (fix WDT spam, modal OTA backdrop static + timeout 240s + état rebooting persistant pendant pipeline FW+FS), FW363 (recovery intégrée catch-all)."
+    "changelog": "FW365+FS234 / EVO-104 ext — COMMERCIALE. UX modal phase 2 : (1) après le 1er reboot et reconnexion, si phase 2 (FS download) active, bascule UI 'rebooting' → 'downloading' propre (barre de progress + label + step indicator visibles, comme phase 1) au lieu de juste un compteur secondes. (2) avant location.reload, polle HEAD / jusqu'à 200 OK pour éviter '404 not found' transitoire entre fin de flash et disponibilité index au boot suivant. Inclut FW365 (fix critique esp_partition_write direct), FW364 (WDT spam, timeout 240s, backdrop static), FW363 (recovery catch-all)."
   }
 }
