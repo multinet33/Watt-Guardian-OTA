@@ -10,10 +10,10 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "5e8c9ff8c9d62f25367d24649e4d262f0688260f9306587bb8617263b0a419d4",
-        "size": 2020496
+        "sha256": "2abaac83117f44b9f9d237d14171986e1ab71824debe291dc2cd7863f9a3f771",
+        "size": 2020512
       }
     },
-    "changelog": "FW357 (annoncé en sentinelle 9999 pendant phase test) — 2 fixes critiques fallback D OTA pending : (1) NVS putUInt/getUInt au lieu de putBool/getBool (le flag pending n'était pas relu après reboot — arduino-esp32 3.x). (2) Skip init S3HMI/LVGL en mode pending → libère ~75 KB SRAM DMA + LVGL pour heap fresh ~150 KB lors du download HTTPS. Logs Serial enrichis pour diagnostic lecture NVS. Polish UX modal OTA conservé."
+    "changelog": "FW358 (annoncé en sentinelle 9999) — fix HTTP 302 download : ajout setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS) sur HTTPClient pour suivre la redirection GitHub Releases vers release-assets.githubusercontent.com. Sans ça, GET retournait 302 et avortait. Inclut tous les fixes FW357 (NVS putUInt/getUInt fiabilité arduino-esp32 3.x + skip S3HMI/LVGL init en mode pending boot pour heap fresh ~180 KB)."
   }
 }
