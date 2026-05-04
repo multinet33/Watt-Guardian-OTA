@@ -10,13 +10,13 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "bf733cc12293ea29f46511cbfc69a306ef0a260b058df11d0be7825f69e8fb52",
+        "sha256": "9eb33d004e23cfe9c4fd7309848079414aac275861fa5e72ca720e7436c91f6c",
         "size": 2035328,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "88e67cade152568d9dca77ae8354c1a3e2742554a5d74817804c42e68f315ca4",
+        "filesystem_sha256": "dd8ccc5f10b472694cc47bbc56ce548fbb7179927ef62af2c6bc0eb63312fab6",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW367+FS236 / EVO-104 ext — COMMERCIALE. (1) Fix modal scope FW+FS : ne déclare plus 'success' à la fin de la phase 1 (state passe transitoirement à success entre FW done et reboot vers FS). Maintenant ne fire le success/reload que si current_step==2 ou scope mono-phase. Affiche 'Étape 1/2 terminée — redémarrage pour étape 2…' à la transition. (2) Sync BUILD_FS dans config.h (236) avec system-status.js : avant le marqueur log compile-time était figé à FS228 et trompeur. (3) Validation post-flash FS confirme SPIFFS mount + index.html.gz PRESENT avant reboot. Inclut FW365 esp_partition_write direct, FW364 WDT, modal fixes."
+    "changelog": "FW368+FS237 / EVO-104 ext — COMMERCIALE. UX modal moins anxiogène : (1) gotoRebootingState ne bascule PLUS vers la grosse fenêtre 'Redémarrage en cours' avec icône power-off et barre 90s (anxiogène en plein pipeline). On reste sur la vue 'downloading' avec label inline 'Redémarrage en cours… (Xs)' et la barre passe en mode striped/animée. (2) pollUntilReady plus strict : check positif (sb-admin-2 OU watt-guardian OU page-top dans body) en plus de l'absence du marqueur recovery. Évite '404 not found' transitoire. Retries 20→40 (60s timeout). Inclut FW367 fix success phase 1, FW365 esp_partition_write direct."
   }
 }
