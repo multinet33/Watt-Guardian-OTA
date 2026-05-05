@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW374/FS249. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW375/FS250. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-05T17:45:00Z",
+    "released_at": "2026-05-05T18:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "ef811531f1be1fed25bde571ae98631afa8af08706331ae6571969ac72a4c728",
-        "size": 2036160,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "dbc2609bd5fa61fadc8b060d477380b65cba2cdc364e59819a460163a7d22556",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "c53026ec651e39da995e4728a1b26f3616fc0c83eb29e781dae9523e37c75d25",
+        "size": 2036496,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "ce3afb6ed23d2ee3fe59d897f8e20ea0e58c83628004b51d4058904341550a6b",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "6ab0f44eec811fb1659ec1f6b443f415120397eead98f4edcca15ef54f8b9c92",
-        "size": 2032720,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "dbc2609bd5fa61fadc8b060d477380b65cba2cdc364e59819a460163a7d22556",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "ef49d0dfbb09547597809cdf1377a7845a5bbaf06b67d89dddd2485d9760be89",
+        "size": 2033072,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "ce3afb6ed23d2ee3fe59d897f8e20ea0e58c83628004b51d4058904341550a6b",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW374+FS249 / EVO-104 ext — COMMERCIALE. SSE push OTA status au lieu de polling. Backend : _publishStatus() émet event 'ota_status' sur /events à chaque transition d'état (CHECKING, AVAILABLE/UPTODATE, DOWNLOADING phase 1+2, FLASHING, SUCCESS, ERROR) + 1 fois/sec pendant les chunks. webFunctions.h : /events exclu du 503 isFlashing pour rester actif pendant flash. Frontend info.html : addEventListener('ota_status') déclenche _otaForcePoll() instantanément ; le setInterval fallback passe de 1.5s à 5s (SSE prend la main pour les notifs urgentes, polling reste safety net si SSE coupe pendant Update.write)."
+    "changelog": "FW375+FS250 — Fix SPIFFS partial write : esp_partition_write recevait des chunks HTTP non-alignés (700-1024 octets variable) → SHA OK + index.html.gz visible mais d'autres fichiers absents après reboot (table SPIFFS corrompue). Fix : staging buffer 4 KB aligné, dernière page paddée à 4 B avec 0xFF. UI fixes : retire 'Préparation en cours' (utilise direct le label étape active firmware/filesystem) ; gras initial sur étape 1 dès l'init de la modale (sans attendre 1er poll), bascule rebooting en fin de phase 2 à perte connexion (progress>=90) pour que la fenêtre se ferme correctement à la fin du pipeline."
   }
 }
