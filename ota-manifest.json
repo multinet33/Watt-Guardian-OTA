@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW359/BUILD_FS=229. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW374/FS249. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-04T22:05:00Z",
+    "released_at": "2026-05-05T17:45:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "bf1cb3af1eb1f3af9330afc0e3da1da923e8d3f912b283d1f71ac42f4bbcb28f",
-        "size": 2035712,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "53436a47e8adcef2ca0cea511724dd32d8b2079d34254b974bd361746a3b77b4",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "ef811531f1be1fed25bde571ae98631afa8af08706331ae6571969ac72a4c728",
+        "size": 2036160,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "dbc2609bd5fa61fadc8b060d477380b65cba2cdc364e59819a460163a7d22556",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "52972466511fc534af4e19c5798078c3e9b8168e0e4f47d5eb7f8b05549bc022",
-        "size": 2032192,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "53436a47e8adcef2ca0cea511724dd32d8b2079d34254b974bd361746a3b77b4",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "6ab0f44eec811fb1659ec1f6b443f415120397eead98f4edcca15ef54f8b9c92",
+        "size": 2032720,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v374/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "dbc2609bd5fa61fadc8b060d477380b65cba2cdc364e59819a460163a7d22556",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW368+FS240 / EVO-104 ext — COMMERCIALE. Fix burger iPhone : wg-loader.js avait pointer-events:auto sur l'overlay → bloquait tous les clics tant que window.load ne fire pas (et Safari iPhone est capricieux). Maintenant pointer-events:none + fallback 8s→3s. Le burger marche dès que sb-admin-2.js+jQuery sont chargés. Inclut FS239 retire ElegantOTA recovery + masque sidebar OTA, FS237 UX modal striped, FW367 fix success phase 1, FW365 esp_partition_write direct."
+    "changelog": "FW374+FS249 / EVO-104 ext — COMMERCIALE. SSE push OTA status au lieu de polling. Backend : _publishStatus() émet event 'ota_status' sur /events à chaque transition d'état (CHECKING, AVAILABLE/UPTODATE, DOWNLOADING phase 1+2, FLASHING, SUCCESS, ERROR) + 1 fois/sec pendant les chunks. webFunctions.h : /events exclu du 503 isFlashing pour rester actif pendant flash. Frontend info.html : addEventListener('ota_status') déclenche _otaForcePoll() instantanément ; le setInterval fallback passe de 1.5s à 5s (SSE prend la main pour les notifs urgentes, polling reste safety net si SSE coupe pendant Update.write)."
   }
 }
