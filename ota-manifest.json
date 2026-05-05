@@ -10,18 +10,18 @@
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "9eb33d004e23cfe9c4fd7309848079414aac275861fa5e72ca720e7436c91f6c",
-        "size": 2035328,
+        "sha256": "02466337a8ce1b890c63046d8b1415fa599c24941b8f4916e8a7551607862a7a",
+        "size": 2035680,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "4caa1f2c960a9ddc153c57ee61b85c46f3e4af80a40a238bb3ee491002eed0ac",
+        "filesystem_sha256": "9718e91f5e6d58316ece34dfb420462eebaface182c681894e7b93827da2b69b",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "5cec7ee72b6db1353ae87433f5224a3000c6ccc491abc514bb2c8a599cecad26",
-        "size": 2031408,
+        "sha256": "a89f35fc71e90c9d4595a587119e92343aca3dd04b01005425c445b7c8ea7686",
+        "size": 2032192,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "4caa1f2c960a9ddc153c57ee61b85c46f3e4af80a40a238bb3ee491002eed0ac",
+        "filesystem_sha256": "9718e91f5e6d58316ece34dfb420462eebaface182c681894e7b93827da2b69b",
         "filesystem_size": 4194304
       }
     },
