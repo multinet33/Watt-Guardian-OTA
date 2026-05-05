@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW377/FS252.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW377/FS253.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-05T22:45:00Z",
+    "released_at": "2026-05-05T23:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v377/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "896b4d16e755f4e0616f296919a29704509198146fbf492450443c3a271da796",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v378/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "d6b57153010a4d4c7ad71489f1aec2a7894bbbf9cd0f9e4cd4d92bcfadd6a57c",
         "size": 2037040,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v377/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "eb4f584295fad47d0de922ec8aac15812c747b8f1ea1cf8a82a9b35310cc2055",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v378/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "0c30c685e361a6927c0dd437020796b7bdaeddf65975b4c6bb4b9705e751b277",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v377/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "3b50dd1f8b424bbec192e58e83383702bf4a2ac24a69811fca23c3314c405112",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v378/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "2d43547a5b5fb69eee55b1022a4cde2349a35723046e0aeddb03767e90cb40eb",
         "size": 2033568,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v377/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "eb4f584295fad47d0de922ec8aac15812c747b8f1ea1cf8a82a9b35310cc2055",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v378/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "0c30c685e361a6927c0dd437020796b7bdaeddf65975b4c6bb4b9705e751b277",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW377+FS252 — Isolation lwIP pendant flash FS. (1) FW376 : test_fs_version() guardé par isFlashing() — fix bug critique où SPIFFS.begin(true) appelé par /info ou /state pendant le flash reformatait la partition (SHA OK + index présent mais fichiers absents au reboot). + diagnostic post-flash sonde 8 fichiers. (2) FS252 : listener SSE consomme event.data direct via JSON.parse au lieu de re-déclencher un AJAX /ota/status — fin du burst 1+/sec qui saturait AsyncTCP/lwIP. (3) FW377 : avant l'erase 4 MB, events.close() + server.end() pour isoler proprement la stack réseau (plus d'accept TCP, clients SSE fermés, pcb libérés). Élimine pcb is NULL / async_tcp WDT 60s / Bad file number / SPIFFS mount failed -10025 vus pendant flash."
+    "changelog": "FW377+FS253 — UX modale OTA finale (backend FW377 inchangé). FS253 : (1) coche verte ✅ étape 1 dès la fin de phase 1 (sans attendre phase 2). (2) Label par défaut = 'Téléchargement firmware.bin' au lieu de 'Préparation en cours'. (3) Bascule rebooting dès failStreak>=3 si phase 2 démarrée (cohérent avec le server.end() backend qui coupe ~80s la stack réseau pendant le flash FS). (4) Encart 'vidage cache navigateur' affiché pendant phase 2 et dans la modale finale. (5) Plus de location.reload() auto à la fin : bouton Fermer activé, l'utilisateur fait Ctrl+F5 lui-même (rappel cache). (6) Compteur secondes label contextuel : 'Mise à jour filesystem en cours… (Xs)' en phase 2 au lieu de 'Redémarrage en cours'. Backend identique à v377 : isolation lwIP via events.close() + server.end() avant erase 4 MB."
   }
 }
