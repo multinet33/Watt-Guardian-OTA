@@ -15,6 +15,14 @@
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "2c0995782bf1d4f157b5c14dcddfabbb58a3fb613c5e5cc7b793030bfbc72c9f",
         "filesystem_size": 4194304
+      },
+      "esp32-s3-hmi-1relay": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "5cec7ee72b6db1353ae87433f5224a3000c6ccc491abc514bb2c8a599cecad26",
+        "size": 2031408,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v357/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "2c0995782bf1d4f157b5c14dcddfabbb58a3fb613c5e5cc7b793030bfbc72c9f",
+        "filesystem_size": 4194304
       }
     },
     "changelog": "FW368+FS240 / EVO-104 ext — COMMERCIALE. Fix burger iPhone : wg-loader.js avait pointer-events:auto sur l'overlay → bloquait tous les clics tant que window.load ne fire pas (et Safari iPhone est capricieux). Maintenant pointer-events:none + fallback 8s→3s. Le burger marche dès que sb-admin-2.js+jQuery sont chargés. Inclut FS239 retire ElegantOTA recovery + masque sidebar OTA, FS237 UX modal striped, FW367 fix success phase 1, FW365 esp_partition_write direct."
