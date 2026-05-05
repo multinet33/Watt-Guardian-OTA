@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW377/FS254.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW377/FS255.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-06T00:15:00Z",
+    "released_at": "2026-05-06T00:50:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v379/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "1593fdadaa594753cda76a6ba3e0c8f940c07dc7cda383a8ade9f184c8d0f454",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "f60b99c165c85b51d6725574d28e0b76fbb990f9713d63ea08b5371adfe843ba",
         "size": 2037040,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v379/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "42e6f47053381a1e07c5eaa281d9704bb6bfd961b2d1d918212380ecee1a4a8d",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "8bc86f0a597afcd6f7659af69f41f96cc9527753f8ab26aee06ef721b0bd6cba",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v379/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "2c411e6d22a84ea5d8d83b8482d0023f38efb9e4837846d945aa2e6a17a4369f",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "dc2cb651691dc1540678a353b237dc6d43b8a01e1fe8727aa93f9e7d04c6e705",
         "size": 2033568,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v379/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "42e6f47053381a1e07c5eaa281d9704bb6bfd961b2d1d918212380ecee1a4a8d",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "8bc86f0a597afcd6f7659af69f41f96cc9527753f8ab26aee06ef721b0bd6cba",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW377+FS254 — Fix transit phase 1→2 quand ESP reboot rapide. FW backend strictement inchangé (pas touche au moteur OTA validé). FS254 frontend : phase 1 termine trop vite (~94% côté UI car le state=success curStep=1 final n'a pas le temps de remonter avant le reboot) → modale ne basculait jamais en phase 2 et restait figée. Fix : à failStreak>=3 en fin de phase 1 (downloadEverSeen=true, !phase2Started, scope=FW+FS), gotoRebootingState contexte 'mid' avec coche verte ✅ étape 1 forcée + étape 2 ▶ active + label 'Étape 1/2 terminée — redémarrage…' + barre reset 0%. 3 contextes de rebooting : pre1 (fallback D) / mid (phase1→phase2) / phase2 (server.end FS)."
+    "changelog": "FW377+FS255 — Polling adaptatif + auto mid→phase2. FW backend intouché. FS255 frontend : symptôme observé v379 = phase 1 atteint 100% mais la modale ne basculait pas en phase 2 active (entre reboot intermédiaire et server.end backend FS, fenêtre courte ratée par polling 5s). Fix : (1) Polling adaptatif 1.5s pendant rebootStartTs!==null pour capturer la fenêtre. (2) Auto-transition contexte 'mid' → 'phase2' après 15s sans poll réussi : si le client n'a rien reçu depuis 15s en mid, on présume que le device flashe le FS (server.end backend), on bascule visuellement étape 2 active + label 'Mise à jour filesystem en cours…' avec compteur reset. Garantit que la modale ne reste jamais figée."
   }
 }
