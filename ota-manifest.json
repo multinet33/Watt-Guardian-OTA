@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW377/FS255.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW377/FS256.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-06T00:50:00Z",
+    "released_at": "2026-05-06T01:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "f60b99c165c85b51d6725574d28e0b76fbb990f9713d63ea08b5371adfe843ba",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v381/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "e12d56a0e478d5e399c1f5cb8a82edd1486dc652c7e7f9d548546547876194aa",
         "size": 2037040,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "8bc86f0a597afcd6f7659af69f41f96cc9527753f8ab26aee06ef721b0bd6cba",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v381/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "f7325887f392a50073c91ce67bde41afbcffddd3f72beecd5081545e5115e526",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "dc2cb651691dc1540678a353b237dc6d43b8a01e1fe8727aa93f9e7d04c6e705",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v381/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "773609eeacb5fa79fee00c4fc72e9e0e13b7013f4f362491f0f2c48ffd3c7dd1",
         "size": 2033568,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v380/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "8bc86f0a597afcd6f7659af69f41f96cc9527753f8ab26aee06ef721b0bd6cba",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v381/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "f7325887f392a50073c91ce67bde41afbcffddd3f72beecd5081545e5115e526",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW377+FS255 — Polling adaptatif + auto mid→phase2. FW backend intouché. FS255 frontend : symptôme observé v379 = phase 1 atteint 100% mais la modale ne basculait pas en phase 2 active (entre reboot intermédiaire et server.end backend FS, fenêtre courte ratée par polling 5s). Fix : (1) Polling adaptatif 1.5s pendant rebootStartTs!==null pour capturer la fenêtre. (2) Auto-transition contexte 'mid' → 'phase2' après 15s sans poll réussi : si le client n'a rien reçu depuis 15s en mid, on présume que le device flashe le FS (server.end backend), on bascule visuellement étape 2 active + label 'Mise à jour filesystem en cours…' avec compteur reset. Garantit que la modale ne reste jamais figée."
+    "changelog": "FW377+FS256 — Modale OTA refondue : anneau CSS + countdown 180s. FW backend strictement inchangé. FS256 frontend : remplacement total de la machine d'états client (timeline 2 étapes, gotoRebootingState, contextes mid/phase2/pre1, _otaPollUntilReady, _otaPhase1Done/Phase2Started, polling adaptatif…) par UNE vue 'Mise à jour en cours' avec anneau qui tourne (CSS pur) + countdown 180s au centre. Détection de fin = on a vu state in [downloading, flashing] puis on reçoit idle/uptodate/success → vue succès avec bouton Fermer + rappel Ctrl+F5. Timeout 180s → vue erreur + bouton Réessayer. Polling AJAX simple 2s + listener SSE en parallèle. ~400 lignes JS supprimées."
   }
 }
