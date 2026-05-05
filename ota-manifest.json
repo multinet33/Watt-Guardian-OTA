@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW375/FS250. Permet d'afficher toujours 'DISPONIBLE' pour itérer sans bumper à chaque correction. À ramener aux valeurs réelles quand la mécanique OTA pull FW+FS sera stabilisée terrain.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104 (extension FS incluse). Les binaires pointés sont FW375/FS251. FW inchangé depuis v375 (staging 4 KB aligné), seul le FS bumpé pour les fixes UI phase 2.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-05T18:30:00Z",
+    "released_at": "2026-05-05T18:55:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/firmware-esp32-s3-hmi-3relays.bin",
         "sha256": "c53026ec651e39da995e4728a1b26f3616fc0c83eb29e781dae9523e37c75d25",
         "size": 2036496,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "ce3afb6ed23d2ee3fe59d897f8e20ea0e58c83628004b51d4058904341550a6b",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375b/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "cd7fb62974d964730eff01e0840ee5eae26707d2d2c24b87a478915a20079d6f",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/firmware-esp32-s3-hmi-1relay.bin",
         "sha256": "ef49d0dfbb09547597809cdf1377a7845a5bbaf06b67d89dddd2485d9760be89",
         "size": 2033072,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "ce3afb6ed23d2ee3fe59d897f8e20ea0e58c83628004b51d4058904341550a6b",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v375b/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "cd7fb62974d964730eff01e0840ee5eae26707d2d2c24b87a478915a20079d6f",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW375+FS250 — Fix SPIFFS partial write : esp_partition_write recevait des chunks HTTP non-alignés (700-1024 octets variable) → SHA OK + index.html.gz visible mais d'autres fichiers absents après reboot (table SPIFFS corrompue). Fix : staging buffer 4 KB aligné, dernière page paddée à 4 B avec 0xFF. UI fixes : retire 'Préparation en cours' (utilise direct le label étape active firmware/filesystem) ; gras initial sur étape 1 dès l'init de la modale (sans attendre 1er poll), bascule rebooting en fin de phase 2 à perte connexion (progress>=90) pour que la fenêtre se ferme correctement à la fin du pipeline."
+    "changelog": "FW375+FS251 — UI phase 2 gras + retire 'Préparation en cours'. Phase 2 maintenant en gras à la reprise post-reboot (curStep robuste : current_step backend > _otaPhase2Started flag > scope > défaut). _exitRebootingState set _otaPhase2Started=true + _otaPhase1Done=true pour verrouiller la timeline. Retire les 3 reset 'Préparation en cours' dans les branches error/flashing/REBOOT_FOR_OTA — le label étape active reste. FW reste 375 (staging 4 KB aligné inchangé). NOTE : si après cette MAJ certaines pages restent en 'fichier SPIFFS absent', c'est un résidu de la flash précédente avec FS corrompu — tester un nouveau cycle complet pour valider."
   }
 }
