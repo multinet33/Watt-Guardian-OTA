@@ -4,27 +4,27 @@
   "guardian": {
     "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 384,
-    "build_fs": 265,
-    "released_at": "2026-05-06T13:00:00Z",
+    "build_fw": 385,
+    "build_fs": 266,
+    "released_at": "2026-05-06T13:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v389/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "a9b206fd3b59a9d6c0c35c38ee14b4c9b2319b96d9500c1bc4cf51ed7d910163",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v390/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "ddd8ca05888badde5e42d3911cf616d3894a0468115cc00e5fb63c924847e5b4",
         "size": 2040848,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v389/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "7ff8a46393063d13a87787fbd3aec9fe0628970e434bc65cc324357c2a5b68e3",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v390/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "fc4e91a551733f73caffa676fa51599a6e8f3acb62af9f71e28c7c665d097a36",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v389/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "a4c32878cb58f16bfc0dc49ac467b853f527e590568b3e6697b516979ce143be",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v390/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "2901fc022a0fe9ce16350f48b2955319f90945b152ffbaffc3bd30ef90db00ab",
         "size": 2037424,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v389/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "7ff8a46393063d13a87787fbd3aec9fe0628970e434bc65cc324357c2a5b68e3",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v390/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "fc4e91a551733f73caffa676fa51599a6e8f3acb62af9f71e28c7c665d097a36",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW384+FS265 — seuil seenPhase2 30s → 90s. Phase 2 (download FS) dure jusqu'à 80s avec server.end() backend, donc 30s permettait un faux positif success prématuré si state=idle observé brièvement entre 2 transitions pendant phase 2. 90s garantit qu'on a forcément dépassé la fin de phase 2. Le signal primaire versionBumped (current_fw/fs > initial) reste inchangé."
+    "changelog": "FW385+FS266 — Détection FW/FS désynchronisés. (1) Build-time : script PIO check_build_fs.py compare BUILD_FS data0/system-status.js (ref) vs config.h (mirror), fail build si mismatch. Évite l'oubli au dev. (2) Runtime : carte Identité info.html compare id.fs_build (FW compilé) vs window.BUILD_FS_GLOBAL (FS chargé) — si différent, badge ⚠ inline avec tooltip explicatif. Détecte flash USB/OTA partiels en quelques secondes."
   }
 }
