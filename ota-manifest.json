@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW379/FS260.",
-    "build_fw": 9999,
-    "build_fs": 9999,
-    "released_at": "2026-05-06T03:30:00Z",
+    "_test_phase_note": "Sentinelles 9999 retirées 2026-05-06 sur demande user — guardian utilise désormais les vraies valeurs build_fw/build_fs. Le device ne déclenche 'available' que si manifest > current. Pour un re-test idempotent, bumper FW/FS du firmware local avant /ota/check.",
+    "build_fw": 379,
+    "build_fs": 261,
+    "released_at": "2026-05-06T08:50:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "d1c9754ecb2faeef48a483ac91c96b977062e46382275984a989945f28992b53",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "73e26d0146910d40d4f6f8bb66c8dbb3af3ef7f1055016389507879417d4d6f4",
         "size": 2038832,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "bcb2eaba0763ae3777cb52ea2647ca750ac226be024df91702ff381bfc2afc4a",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "9fc1e8d03748050eb0bd8a2d63a425498b6f3a164560f72c2364ed669784d0db",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "d06abbcde8ef32816391ff039329eb6d490a25ed0716bf28315db899399beb3d",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "9284d234b1eff230a07176347bfadb0da3f9fcb905a59fab6d5980def571c6b3",
         "size": 2035376,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "bcb2eaba0763ae3777cb52ea2647ca750ac226be024df91702ff381bfc2afc4a",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "9fc1e8d03748050eb0bd8a2d63a425498b6f3a164560f72c2364ed669784d0db",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW379+FS260 — i18n ES/IT/DE + proxy retry 2min + fix BUG-036. Backend FW379 : (1) PROXY_AUTO_RETRY_INTERVAL_MS 10 min → 2 min (récupération plus rapide après coupure proxy/réseau). (2) /languages étend [fr,en,es,it,de], /setlanguage accepte les 5. FS260 : (a) 3 nouvelles langues ES/IT/DE complètes (1234 clés × 5 langues, parité 100%, cohérence cross-FW). (b) Fix BUG-036 (FS259) : carte Dimmers row 'ch-missing-row' restait visible avec '🔗 — | —' à cause de Bootstrap .d-flex !important qui override style.display:none inline. Retrait de d-flex sur les 4 rows. Validé terrain 2026-05-06."
+    "changelog": "FW379+FS261 — Fix dropdown langues. FW inchangé. FS261 : config.html dropdown langue affichait les codes 'es'/'it'/'de' au lieu des endonymes Español/Italiano/Deutsch (table labels JS contenait seulement fr+en). Ajout des 3 endonymes manquants → affichage cohérent : Français · English · Español · Italiano · Deutsch (convention endonyme W3C/Wikipedia)."
   }
 }
