@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW377/FS257.",
+    "_test_phase_note": "build_fw=9999 et build_fs=9999 = sentinelles pendant la phase de test EVO-104. Les binaires pointés sont FW379/FS260.",
     "build_fw": 9999,
     "build_fs": 9999,
-    "released_at": "2026-05-06T02:00:00Z",
+    "released_at": "2026-05-06T03:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v382/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "9d8b890849567f2649482b8b301b849d5ea6fdf314bb54d025ce6689f9645106",
-        "size": 2037040,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v382/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "57e125ed657fc791a9a43f04c3f613121920c271599ae6b7d185364921099574",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "d1c9754ecb2faeef48a483ac91c96b977062e46382275984a989945f28992b53",
+        "size": 2038832,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "bcb2eaba0763ae3777cb52ea2647ca750ac226be024df91702ff381bfc2afc4a",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v382/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "62eff4614a9de86561733c9fe0fdc8e185c029add1ddf676728b63fd7dda0d50",
-        "size": 2033568,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v382/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "57e125ed657fc791a9a43f04c3f613121920c271599ae6b7d185364921099574",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "d06abbcde8ef32816391ff039329eb6d490a25ed0716bf28315db899399beb3d",
+        "size": 2035376,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v383/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "bcb2eaba0763ae3777cb52ea2647ca750ac226be024df91702ff381bfc2afc4a",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW377+FS257 — Attendre fin de phase 2 avant succès. FW backend intouché. FS257 frontend : la modale captait la fin de phase 1 (state=success curStep=1) et déclarait succès prématurément alors que la phase 2 (FS) n'avait pas commencé. Fix : ajout flag seenPhase2 set quand on voit current_step=2 actif (downloading/flashing). gotoSuccess UNIQUEMENT si seenActive ET seenPhase2 ET state=idle/uptodate/success. Présume que toute MAJ OTA pull est FW+FS (cohérent avec versions UI synchrones)."
+    "changelog": "FW379+FS260 — i18n ES/IT/DE + proxy retry 2min + fix BUG-036. Backend FW379 : (1) PROXY_AUTO_RETRY_INTERVAL_MS 10 min → 2 min (récupération plus rapide après coupure proxy/réseau). (2) /languages étend [fr,en,es,it,de], /setlanguage accepte les 5. FS260 : (a) 3 nouvelles langues ES/IT/DE complètes (1234 clés × 5 langues, parité 100%, cohérence cross-FW). (b) Fix BUG-036 (FS259) : carte Dimmers row 'ch-missing-row' restait visible avec '🔗 — | —' à cause de Bootstrap .d-flex !important qui override style.display:none inline. Retrait de d-flex sur les 4 rows. Validé terrain 2026-05-06."
   }
 }
