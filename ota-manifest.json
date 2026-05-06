@@ -4,27 +4,27 @@
   "guardian": {
     "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 382,
-    "build_fs": 263,
-    "released_at": "2026-05-06T11:30:00Z",
+    "build_fw": 383,
+    "build_fs": 264,
+    "released_at": "2026-05-06T12:30:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v387/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "f78b9513531e02527fd1e8f3fe7c6a633dfc72185ee32d61d472ed1d22bae63e",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v388/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "d58365f729e3dc98dc52f41b6f429bce1279a3181cbd33650ff82a2edf1806b9",
         "size": 2040848,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v387/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "e43f2c9927f7f97010998e461f85a2362a5c683531c7cfcb03d56780e09a90f1",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v388/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "0e37150f7bf4a84849acd04f51609be27ef7b52cfbabfaf8a00ad3d4de4472e8",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v387/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "5b99a8724bde3c8b01d69ddb6a92e870c2044b3c628b8d785b1161541800cb1b",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v388/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "e4676b5cd73b67032ea36645fce5e49847fac0e1a9bb591666ecb878ec69e960",
         "size": 2037424,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v387/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "e43f2c9927f7f97010998e461f85a2362a5c683531c7cfcb03d56780e09a90f1",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v388/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "0e37150f7bf4a84849acd04f51609be27ef7b52cfbabfaf8a00ad3d4de4472e8",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW382+FS263 — history 3 rings cascadés + persistance NVS + zone dangereuse. FW382 : refonte historyFunction.h tier-aware (recent 24h@5min + medium 7j@1h + long 30j@6h = ~12 KB total au lieu de 172 KB). Agrégation à l'écriture, snapshot NVS 1×/jour à minuit + avant reboot OTA, restore au boot. Endpoint POST /history/clear?confirm=EFFACER. FS263 : carte Zone dangereuse backup.html avec bouton 'Effacer l'historique 30j' + prompt confirmation."
+    "changelog": "FW383+FS264 — Fix détection fin MAJ (3 signaux robustes). Symptôme observé : modale FS262 expirait countdown 180s → vue erreur alors que la MAJ FW+FS s'était bien passée. Fix : (1) seenStarted set dès POST /ota/apply OK (signal certain et précoce, remplace seenActive qui pouvait rater la fenêtre courte downloading/flashing) ; (2) capture initialFw/initialFs au 1er poll → signal versionBumped si current_fw OU current_fs > initial = preuve directe MAJ atterrie (signal le plus robuste) ; (3) seenPhase2 + elapsed>30s comme signal court ; (4) fallback elapsed>120s. Countdown reste 180s (suffit, MAJ dure ~110-130s)."
   }
 }
