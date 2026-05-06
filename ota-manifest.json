@@ -16,15 +16,6 @@
         "filesystem_sha256": "8cc7baba409f7720d6c7c2177f650218cbb7db3aedaabd1e24f1135598950fe1",
         "filesystem_size": 4194304
       },
-      "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "60f4ef8c371cdc9f6ac71f982faf4c358b08f939690e6c8c9143b76d7d729893",
-        "size": 2038592,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "2bbaecfdae1223f0e4e1ea3776d1950ea8b0e76489d609fabb93faa5d725ffed",
-        "filesystem_size": 4194304
-      }
-    },
     "changelog": "FW395+FS275 — OTA modal detect fin"
   }
 }
