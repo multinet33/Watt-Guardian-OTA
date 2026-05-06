@@ -6,7 +6,7 @@
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
     "build_fw": 395,
     "build_fs": 275,
-    "released_at": "2026-05-06T19:41:04Z",
+    "released_at": "2026-05-06T19:44:03Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
@@ -16,6 +16,15 @@
         "filesystem_sha256": "8cc7baba409f7720d6c7c2177f650218cbb7db3aedaabd1e24f1135598950fe1",
         "filesystem_size": 4194304
       },
+      "esp32-s3-hmi-1relay-commercial": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/firmware-esp32-s3-hmi-1relay-commercial.bin",
+        "sha256": "09e34b39db1c348da49eddfdfbeae1ffc05dc90b755d441a242bc9a356366329",
+        "size": 2040672,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/spiffs-esp32-s3-hmi-1relay-commercial.bin",
+        "filesystem_sha256": "2bbaecfdae1223f0e4e1ea3776d1950ea8b0e76489d609fabb93faa5d725ffed",
+        "filesystem_size": 4194304
+      }
+    },
     "changelog": "FW395+FS275 — OTA modal detect fin"
   }
 }
