@@ -3,28 +3,28 @@
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
     "version": "2026.05",
-    "_test_phase_note": "Sentinelles 9999 retirées 2026-05-06 sur demande user — guardian utilise désormais les vraies valeurs build_fw/build_fs. Le device ne déclenche 'available' que si manifest > current. Pour un re-test idempotent, bumper FW/FS du firmware local avant /ota/check.",
-    "build_fw": 379,
+    "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
+    "build_fw": 380,
     "build_fs": 261,
-    "released_at": "2026-05-06T08:50:00Z",
+    "released_at": "2026-05-06T09:15:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "73e26d0146910d40d4f6f8bb66c8dbb3af3ef7f1055016389507879417d4d6f4",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v385/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "bac5beac730e75234fd2da08ffd8b24fd180d04a225a53fda4d487786feef1a3",
         "size": 2038832,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v385/spiffs-esp32-s3-hmi-3relays.bin",
         "filesystem_sha256": "9fc1e8d03748050eb0bd8a2d63a425498b6f3a164560f72c2364ed669784d0db",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "9284d234b1eff230a07176347bfadb0da3f9fcb905a59fab6d5980def571c6b3",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v385/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "5427b3d63bdce63edfb2282d5b1de02fbcd677354297158c33fa0548273d0c10",
         "size": 2035376,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v384/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v385/spiffs-esp32-s3-hmi-1relay.bin",
         "filesystem_sha256": "9fc1e8d03748050eb0bd8a2d63a425498b6f3a164560f72c2364ed669784d0db",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW379+FS261 — Fix dropdown langues. FW inchangé. FS261 : config.html dropdown langue affichait les codes 'es'/'it'/'de' au lieu des endonymes Español/Italiano/Deutsch (table labels JS contenait seulement fr+en). Ajout des 3 endonymes manquants → affichage cohérent : Français · English · Español · Italiano · Deutsch (convention endonyme W3C/Wikipedia)."
+    "changelog": "FW380+FS261 — bump FW pour alignement avec FS261 (sans changement code). Permet au pipeline OTA pull de pousser firmware+filesystem cohérents : marker log [FS261·FW380] consistent partout après update. FS261 contient le fix dropdown langues (endonymes Français · English · Español · Italiano · Deutsch dans config.html)."
   }
 }
