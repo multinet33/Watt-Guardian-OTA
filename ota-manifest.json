@@ -4,27 +4,27 @@
   "guardian": {
     "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 390,
-    "build_fs": 271,
-    "released_at": "2026-05-06T16:00:00Z",
+    "build_fw": 392,
+    "build_fs": 273,
+    "released_at": "2026-05-06T17:00:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "c4cf03ed4ae3eb361af0559231fbd3912952b5522265d8fee0b367af945e9043",
-        "size": 2043168,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "1654c96bcf14cf9e4944392947b30c7ef6da110fe28aca5b4a7148826c50da0d",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "8c47363df4e88b79df80bac01341991acd827f8d23a47e5e6ae1266c0a50b3bf",
+        "size": 2043312,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "8cc7baba409f7720d6c7c2177f650218cbb7db3aedaabd1e24f1135598950fe1",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "70b791fdbd150cab572711b8076532ea1fc37456dc0c994a2209df4f639799ec",
-        "size": 2039728,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "1654c96bcf14cf9e4944392947b30c7ef6da110fe28aca5b4a7148826c50da0d",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "293553997cc0c591ac321dc3e7913ad1065b9b1c19c23822a48b871b1736648d",
+        "size": 2039888,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "8cc7baba409f7720d6c7c2177f650218cbb7db3aedaabd1e24f1135598950fe1",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW390+FS271 — FIX CRITIQUE OTA pipeline FW+FS. Phase 2 était skippée silencieusement quand phase 1 réussissait : checkManifest comparait current_fs=BUILD_FS (compile-time nouveau FW, donc déjà à jour) au manifest → 'FS OK' → skip phase 2 → SPIFFS désynchronisé persistant. Fix : checkManifest lit /fs_build du SPIFFS (marker généré par check_build_fs.py) pour avoir la VRAIE version chargée. FS271 : versionBumped frontend exige need_fw ET need_fs au lieu de OR laxiste."
+    "changelog": "FW392+FS273 — Renommage 'Info système' → 'Informations système'. Test idéal pipeline OTA full (toutes les optims FW387-391 incluses). UI : titre page, sidebar item, h1 mis à jour. FR + EN parité (System info → System information)."
   }
 }
