@@ -2,11 +2,11 @@
   "_comment": "Watt-Guardian OTA pull manifest. Lu par le firmware Guardian (FW348+) via raw.githubusercontent.com. À regénérer manuellement (ou via CI/CD GitHub Actions, EVO-104 Phase 4) à chaque release. SHA-256 = hash du firmware.bin sortie de pio run.",
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
-    "version": "2026.05",
+    "version": "2026.04",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 392,
-    "build_fs": 273,
-    "released_at": "2026-05-06T17:00:00Z",
+    "build_fw": 394,
+    "build_fs": 274,
+    "released_at": "2026-05-06T19:01:48Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
@@ -17,14 +17,14 @@
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "293553997cc0c591ac321dc3e7913ad1065b9b1c19c23822a48b871b1736648d",
-        "size": 2039888,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "8cc7baba409f7720d6c7c2177f650218cbb7db3aedaabd1e24f1135598950fe1",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v394/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "9a2244a5e4bc67b960e983297f18f7e5a5f2947245e9e3ef791518e9c01d1037",
+        "size": 2038256,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v394/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "9b8de8572c9e504dd1f4bc0b1a604b19874bd292a3d2c6c431ffbd5861d5ce65",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW392+FS273 — Renommage 'Info système' → 'Informations système'. Test idéal pipeline OTA full (toutes les optims FW387-391 incluses). UI : titre page, sidebar item, h1 mis à jour. FR + EN parité (System info → System information)."
+    "changelog": "FW394+FS274 — Fix OTA \"download incomplet\" sur les 2 phases \n  (FW + FS), même pattern que sensors FW51. BOARD_ENV\n  auto-injecté.  Bouton \"Sauvegarder maintenant\" sur         \n  history.html → endpoint POST /history/save qui force    \n  history::nvs_snapshot(). Accesseurs publics\n  last_snapshot_ts/recent_count/medium_count/long_count.  \n  i18n FR + EN. FS274."
   }
 }
