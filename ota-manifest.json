@@ -4,27 +4,27 @@
   "guardian": {
     "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 387,
-    "build_fs": 268,
-    "released_at": "2026-05-06T14:30:00Z",
+    "build_fw": 388,
+    "build_fs": 269,
+    "released_at": "2026-05-06T15:00:00Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v392/firmware-esp32-s3-hmi-3relays.bin",
-        "sha256": "6a39aeee7f1755da7229af65c08b3e79d04a12134f35f8d1ecc99362bf1d5c07",
-        "size": 2041248,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v392/spiffs-esp32-s3-hmi-3relays.bin",
-        "filesystem_sha256": "d3d2829faff05c23ad89c800a59bb8e2ce3822c6ff1934e57ceba9e6a8a8855f",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v393/firmware-esp32-s3-hmi-3relays.bin",
+        "sha256": "1c94193e081de8f91768860d0c3780ad4a92ef4de824462ae50bcdc9c4082f9d",
+        "size": 2041264,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v393/spiffs-esp32-s3-hmi-3relays.bin",
+        "filesystem_sha256": "e9ac943538dab9ebcf79bdba80a4b8edc6e7e106ace508fec6a042ea45cebd1b",
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v392/firmware-esp32-s3-hmi-1relay.bin",
-        "sha256": "1767dbf316fef812b24f10de75ed402f03d312dbc417159d8bfff6b0d5e3447d",
-        "size": 2037872,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v392/spiffs-esp32-s3-hmi-1relay.bin",
-        "filesystem_sha256": "d3d2829faff05c23ad89c800a59bb8e2ce3822c6ff1934e57ceba9e6a8a8855f",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v393/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "e8caea255f6fa36e01a0b3e1c06ae6f5f695b1d0307b11dbc427ee9c372731af",
+        "size": 2037904,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v393/spiffs-esp32-s3-hmi-1relay.bin",
+        "filesystem_sha256": "e9ac943538dab9ebcf79bdba80a4b8edc6e7e106ace508fec6a042ea45cebd1b",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW387+FS268 — Factory reset inclut history + topbar épurée. FW387 : /config/erase?all=1 appelle history::clear_all() pour cohérence retour usine total. FS268 : updateDebugReboot ne réinjecte plus le span _dbg-reboot (date/FW/FS retirés de la topbar — restent dans carte Identité). Confirmation dialog factory reset mentionne explicitement la perte d'historique. Inclut aussi FW386 id.fs_build_spiffs (audit FW/FS désync via curl/info)."
+    "changelog": "FW388+FS269 — Fix system-status.js no-cache. Le span topbar fantôme (↺ date · FW · FS:264) qui persistait après MAJ vers FS268 venait du cache navigateur 24h hérité de FW258. system-status.js est désormais servi en max-age=0, no-cache, must-revalidate (les autres assets restent cachés 24h). Le fix updateDebugReboot no-op (FS268) prend effet dès le 1er reload après cette MAJ."
   }
 }
