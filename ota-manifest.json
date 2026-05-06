@@ -4,9 +4,9 @@
   "guardian": {
     "version": "2026.04",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 395,
-    "build_fs": 275,
-    "released_at": "2026-05-06T19:44:03Z",
+    "build_fw": 396,
+    "build_fs": 276,
+    "released_at": "2026-05-06T19:59:05Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
@@ -17,14 +17,14 @@
         "filesystem_size": 4194304
       },
       "esp32-s3-hmi-1relay-commercial": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/firmware-esp32-s3-hmi-1relay-commercial.bin",
-        "sha256": "09e34b39db1c348da49eddfdfbeae1ffc05dc90b755d441a242bc9a356366329",
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v396/firmware-esp32-s3-hmi-1relay-commercial.bin",
+        "sha256": "c88d63b1c1621ef2cfb5826825c665e8df461a9decbd0b1f5e2f040ab140fcf0",
         "size": 2040672,
-        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v395/spiffs-esp32-s3-hmi-1relay-commercial.bin",
-        "filesystem_sha256": "2bbaecfdae1223f0e4e1ea3776d1950ea8b0e76489d609fabb93faa5d725ffed",
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v396/spiffs-esp32-s3-hmi-1relay-commercial.bin",
+        "filesystem_sha256": "18f6768b3ff94f93a2d1cba0259d4253b9b00c672bd6edf2e6b3825cfee7830e",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW395+FS275 — OTA modal detect fin"
+    "changelog": "FW396+FS276 : Bump +1"
   }
 }
