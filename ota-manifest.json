@@ -4,9 +4,9 @@
   "guardian": {
     "version": "2026.04",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 398,
-    "build_fs": 278,
-    "released_at": "2026-05-06T20:11:28Z",
+    "build_fw": 416,
+    "build_fs": 280,
+    "released_at": "2026-05-08T19:57:37Z",
     "envs": {
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
@@ -23,8 +23,16 @@
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v398/spiffs-esp32-s3-hmi-1relay-commercial.bin",
         "filesystem_sha256": "5f1ea73c3a2230553801cdc6e53c01f7dec561dc551b88b66e60726de06cbaff",
         "filesystem_size": 4194304
+      },
+      "esp32-s3-tdisplay-316-commercial": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v416/firmware-esp32-s3-tdisplay-316-commercial.bin",
+        "sha256": "04c900a912072fe5c7a8d271c0577e827a2791e4ca97e868c10c9bf70f3718e2",
+        "size": 1948640,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v416/spiffs-esp32-s3-tdisplay-316-commercial.bin",
+        "filesystem_sha256": "fec1a5e8b6035f0f28596637bebe4ca53751cb924fab5356c0e95bff93ae1279",
+        "filesystem_size": 4194304
       }
     },
-    "changelog": "FW398+FS278 : Bump +1"
+    "changelog": "FW416+FS280 — LVGL buffers 320x160"
   }
 }
