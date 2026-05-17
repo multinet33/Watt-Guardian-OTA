@@ -4,10 +4,15 @@
   "guardian": {
     "version": "2026.04",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 416,
+    "build_fw": 474,
     "build_fs": 280,
-    "released_at": "2026-05-08T19:57:37Z",
+    "released_at": "2026-05-17T19:29:06Z",
     "envs": {
+      "esp32-s3-hmi-1relay": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v474/firmware-esp32-s3-hmi-1relay.bin",
+        "sha256": "7bfb922d284b494445c5a917f32dfc3e99f2c8d2344ad90a7f621fc74de2d676",
+        "size": 2142496
+      },
       "esp32-s3-hmi-3relays": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v397/firmware-esp32-s3-hmi-3relays.bin",
         "sha256": "8c47363df4e88b79df80bac01341991acd827f8d23a47e5e6ae1266c0a50b3bf",
@@ -33,6 +38,6 @@
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW416+FS280 — LVGL buffers 320x160"
+    "changelog": "FW474 — env esp32-s3-hmi-1relay ajouté (test détection OTA app watt-companion)"
   }
 }
