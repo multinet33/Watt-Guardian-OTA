@@ -2,11 +2,11 @@
   "_comment": "Watt-Guardian OTA pull manifest. Lu par le firmware Guardian (FW348+) via raw.githubusercontent.com. À regénérer manuellement (ou via CI/CD GitHub Actions, EVO-104 Phase 4) à chaque release. SHA-256 = hash du firmware.bin sortie de pio run.",
   "_doc": "Format : pour chaque firmware (guardian/sensors/modulator), lister les envs supportés avec leur firmware_url GitHub Release PUBLIQUE + sha256 + size. Le device matche son env via build_flag BOARD_ENV=\"<env_name>\". Les binaires sont hébergés en GitHub Releases sur ce repo PUBLIC (pas sur Watt-Guardian privé). FW359+ : filesystem_url/sha/size optionnels par env pour OTA SPIFFS séquentiel (FW puis FS).",
   "guardian": {
-    "version": "2026.04",
+    "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 474,
-    "build_fs": 280,
-    "released_at": "2026-05-17T19:29:06Z",
+    "build_fw": 501,
+    "build_fs": 300,
+    "released_at": "2026-05-21T12:34:00Z",
     "envs": {
       "esp32-s3-hmi-1relay": {
         "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v474/firmware-esp32-s3-hmi-1relay.bin",
@@ -36,8 +36,16 @@
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v416/spiffs-esp32-s3-tdisplay-316-commercial.bin",
         "filesystem_sha256": "fec1a5e8b6035f0f28596637bebe4ca53751cb924fab5356c0e95bff93ae1279",
         "filesystem_size": 4194304
+      },
+      "esp32-p4-jc4880p433-commercial": {
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v501/firmware-esp32-p4-jc4880p433-commercial.bin",
+        "sha256": "cde3eb34dbd400664f9826a52a154ecbc2f4e34c110e39a733bc30d99b1d2df4",
+        "size": 2200864,
+        "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v501/spiffs-esp32-p4-jc4880p433-commercial.bin",
+        "filesystem_sha256": "699873d982f3c80ca2575281f4c7af6db1fe4900fa11e4154fb4fc0fbfbdfc8f",
+        "filesystem_size": 4194304
       }
     },
-    "changelog": "FW474 — env esp32-s3-hmi-1relay ajouté (test détection OTA app watt-companion)"
+    "changelog": "FW501 / FS300 — EVO-118 #1 : badge cloud sidebar (sb-admin-2.js toutes pages) + community.html bouton délier masqué quand cloud OFF + 5 clés i18n sidebar.cloud.* ×5 langues. Release env esp32-p4-jc4880p433-commercial."
   }
 }
