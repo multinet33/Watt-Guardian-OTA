@@ -4,7 +4,7 @@
   "guardian": {
     "version": "2026.05",
     "_test_phase_note": "Vraies valeurs build_fw/build_fs (sentinelles 9999 retirées 2026-05-06). Le device ne déclenche 'available' que si manifest > current.",
-    "build_fw": 501,
+    "build_fw": 513,
     "build_fs": 300,
     "released_at": "2026-05-21T12:34:00Z",
     "envs": {
@@ -38,14 +38,14 @@
         "filesystem_size": 4194304
       },
       "esp32-p4-jc4880p433-commercial": {
-        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v501/firmware-esp32-p4-jc4880p433-commercial.bin",
-        "sha256": "cde3eb34dbd400664f9826a52a154ecbc2f4e34c110e39a733bc30d99b1d2df4",
-        "size": 2200864,
+        "firmware_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v513/firmware-esp32-p4-jc4880p433-commercial.bin",
+        "sha256": "e9d71b328ae3843bfb4bd393ee5aaa73e4370a7960ffc25d5360d999f50b11d1",
+        "size": 2202192,
         "filesystem_url": "https://github.com/multinet33/Watt-Guardian-OTA/releases/download/v501/spiffs-esp32-p4-jc4880p433-commercial.bin",
         "filesystem_sha256": "699873d982f3c80ca2575281f4c7af6db1fe4900fa11e4154fb4fc0fbfbdfc8f",
         "filesystem_size": 4194304
       }
     },
-    "changelog": "FW501 / FS300 — EVO-118 #1 : badge cloud sidebar (sb-admin-2.js toutes pages) + community.html bouton délier masqué quand cloud OFF + 5 clés i18n sidebar.cloud.* ×5 langues. Release env esp32-p4-jc4880p433-commercial."
+    "changelog": "FW513 — fix affichage dimmer P4 (esp32-p4-jc4880p433-commercial) : nœud dimmer affichait un % étiqueté « W » (~12415 W) ; corrigé en puissance_route (watts routés)."
   }
 }
